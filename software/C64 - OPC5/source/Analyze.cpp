@@ -461,6 +461,7 @@ static void scan_compound(Statement *stmt)
 /*
  *      returns the desirability of optimization for a subexpression.
  */
+#ifndef __GNUC__
 int OptimizationDesireability(CSE *csp)
 {
 	if( csp->voidf || (csp->exp->nodetype == en_icon &&
@@ -478,6 +479,7 @@ int OptimizationDesireability(CSE *csp)
 	    return 2 * csp->uses;
     return csp->uses;
 }
+#endif
 
 /*
  *      repexpr will replace all allocated references within an expression
